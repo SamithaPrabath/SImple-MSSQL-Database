@@ -1,0 +1,21 @@
+
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+tr{
+    padding: 10px;
+}
+td{
+    padding: 10px;
+}
+h2{
+    text-align: center;
+}
+.main{
+    margin-top: 50px;
+}
+button{
+    padding: 5px;
+    margin: 5px;
+}
