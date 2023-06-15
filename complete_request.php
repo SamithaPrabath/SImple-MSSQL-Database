@@ -2,7 +2,7 @@
     require 'db_con.php';
     
     if(isset($_POST['submit'])){
-        $procedureName = "{call completeExporterRequest(?, ?)}";
+        $procedureName = "{call completeRequestStage(?, ?)}";
 
         $req_id = $_POST['req_id'];
         $date = $_POST['date'];
@@ -12,6 +12,7 @@
         
         $stmt = sqlsrv_query($conn, $procedureName, $params);
         if ($stmt === false) {
+            die(print_r(sqlsrv_errors(), true));
             echo "There was an error please try again!!!!";
         }
         else{

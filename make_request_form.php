@@ -1,4 +1,6 @@
-
+<?php
+    require 'db_con.php';
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -12,18 +14,32 @@
             <form action="make_request.php" method="post">
                 <table>
                     <tr>
-                        <td>Request ID : </td>
+                        <td>RS ID : </td>
                         <td><input type="text" name="req_id"></td>
                     </tr>
 
                     <tr>
-                        <td>Exporter ID : </td>
-                        <td><input type="text" name="exporter_id"></td>
+                        <td>ECOO Number : </td>
+                        <td><input type="text" name="ecoo_number"></td>
                     </tr>
 
                     <tr>
-                        <td>Description : </td>
-                        <td><textarea name="description" id="" cols="30" rows="10"></textarea></td>
+                        <td>Type : </td>
+                        <td><select name="type">
+                        <?php
+                        $sql = "SELECT * FROM [awasdb].[dbo].[Stage_Type]";
+                        
+                        $stmt = sqlsrv_query($conn, $sql);
+                        if ($stmt === false) {
+                            die(print_r(sqlsrv_errors(), true));
+                        }
+                            
+                            while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                                
+                        ?>
+                            <option value="<?php echo $row['stage_type_id']?>"><?php echo $row['stage_type_name']?></option>
+                        <?php } ?>
+                            </select></td>
                     </tr>
 
                     <tr>

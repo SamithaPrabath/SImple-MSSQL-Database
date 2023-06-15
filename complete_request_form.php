@@ -23,7 +23,7 @@
                     </tr>
 
                     <tr>
-                        <td colspan=2><input type="submit" value="Compute Request" name="submit"></td>
+                        <td colspan=2><input type="submit" value="Complete Request" name="submit"></td>
                     </tr>
                 </table>
             </form>

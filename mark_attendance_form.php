@@ -1,4 +1,6 @@
-
+<?php
+    require 'db_con.php';
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -14,11 +16,25 @@
                     <tr>
                         <td>Attendance ID : </td>
                         <td><input type="text" name="attendance_id"></td>
+                        </td>
                     </tr>
 
                     <tr>
                         <td>Officer Id : </td>
-                        <td><input type="text" name="officer_id"></td>
+                        <td><select name="officer_id">
+                        <?php
+                        $sql = "SELECT * FROM [awasdb].[dbo].[officer]";
+                        
+                        $stmt = sqlsrv_query($conn, $sql);
+                        if ($stmt === false) {
+                            die(print_r(sqlsrv_errors(), true));
+                        }
+
+                            while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                        ?>
+                            <option value="<?php echo $row['officer_id']?>"><?php echo $row['officer_name']?></option>
+                        <?php } ?>
+                            </select>
                     </tr>
 
                     <tr>

@@ -2,19 +2,20 @@
     require 'db_con.php';
     
     if(isset($_POST['submit'])){
-        $procedureName = "{call makeExporterRequest(?, ?, ?,?)}";
+        $procedureName = "{call sendRequestStage(?, ?, ?,?)}";
 
         $req_id = $_POST['req_id'];
-        $exporter_id = $_POST['exporter_id'];
-        $description = $_POST['description'];
+        $ecoo_number = $_POST['ecoo_number'];
+        $type = $_POST['type'];
         $date = $_POST['date'];
 
         $mssqlDateTime = date('Y-m-d H:i:s', strtotime($date));
-
-        $params = array(&$req_id, &$exporter_id, &$description, &$mssqlDateTime);
+        echo $mssqlDateTime;
+        $params = array(&$req_id, &$ecoo_number, &$mssqlDateTime ,&$type);
         
         $stmt = sqlsrv_query($conn, $procedureName, $params);
         if ($stmt === false) {
+            die(print_r(sqlsrv_errors(), true));
             echo "There was an error please try again!!!!";
         }
         else{

@@ -27,6 +27,7 @@
       <a class="nav" href="complete_request_form.php">Complete Request</a>
       <a class="nav" href="mark_attendance_form.php">Add Attendance</a>
       <a class="nav" href="sign_off_form.php">Sign Off Attendance</a>
+      <a class="nav" href="reports.php">View Report Graphs</a>
     </nav>
   </div>
   <!-- Rest of your webpage content goes here -->

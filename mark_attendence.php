@@ -14,6 +14,7 @@
         
         $stmt = sqlsrv_query($conn, $procedureName, $params);
         if ($stmt === false) {
+            die(print_r(sqlsrv_errors(), true));
             echo "There was an error please try again!!!!";
         }
         else{
